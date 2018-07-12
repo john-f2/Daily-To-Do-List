@@ -10,11 +10,13 @@ package jf.dailytodo.address;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
+import jf.dailytodo.address.model.ToDoDatabase;
 
-public class mainApp extends Application {
+public class MainApp extends Application {
 
 	@Override
 	public void start(Stage primaryStage) {
+		ToDoDatabase.createDailyTable();
 		
 	}
 
