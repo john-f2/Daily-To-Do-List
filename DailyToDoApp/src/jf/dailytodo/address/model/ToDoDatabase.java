@@ -15,6 +15,7 @@ import java.time.LocalDate;
 import java.util.Date;
 
 import javafx.scene.image.Image;
+import jf.dailytodo.address.util.DateHashMap;
 
 import java.util.Calendar;
 
@@ -25,6 +26,7 @@ public class ToDoDatabase {
 	//close these connections, I will close them when the application ends 
 	private static Connection db = null;
 	private static Statement stmt = null;
+	private static DateHashMap dateMap = new DateHashMap();
 	
 	 
 	
@@ -84,6 +86,39 @@ public class ToDoDatabase {
 		
 	}
 	
+	
+	/**
+	 * 
+	 * Gets today's date as a string 
+	 * 
+	 * @return String 
+	 */
+	public static String getTodayDate() {
+		
+		//localDateTime is set to today's date 
+		LocalDate localDateTime = LocalDate.now();
+		
+		//in order convert to a calendar object, we need to convert the LocalDate
+		//object to a Date object
+		Date date = java.sql.Date.valueOf(localDateTime);
+		
+		//converts the date to a int which will represent what day of the week today is
+		Calendar dayConvert = Calendar.getInstance();
+		dayConvert.setTime(date);
+		
+		//days start from 1 (Sunday) 
+		//ex: Wednesday is 4 on the calendar 
+		int todayDayAsInt = dayConvert.get(Calendar.DAY_OF_WEEK);
+		
+		return dateMap.getDate(todayDayAsInt);
+		
+		
+	}
+	
+	
+	
+	
+	
 	/**
 	 * 
 	 * my initial table for the daily to-do list app
@@ -96,23 +131,8 @@ public class ToDoDatabase {
 		
 		try {
 			
-			//localDateTime is set to today's date 
-			LocalDate localDateTime = LocalDate.now();
-			
-			//in order convert to a calendar object, we need to convert the LocalDate
-			//object to a Date object
-			Date date = java.sql.Date.valueOf(localDateTime);
-			
-			//converts the date to a int which will represent what day of the week today is
-			Calendar dayConvert = Calendar.getInstance();
-			dayConvert.setTime(date);
-			
-			//days start from 1 (Sunday) 
-			//ex: Wednesday is 4 on the calendar 
-			int todayDay = dayConvert.get(Calendar.DAY_OF_WEEK);
-			
-			System.out.println(todayDay);
-			
+
+				
 			
 			
 			return true;

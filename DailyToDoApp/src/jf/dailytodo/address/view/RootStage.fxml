@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="850.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="850.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jf.dailytodo.address.view.RootStageController">
    <children>
       <SplitPane dividerPositions="0.17452830188679244" prefHeight="160.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -33,6 +33,15 @@
                         </HBox>
                         <HBox prefHeight="57.0" prefWidth="200.0">
                            <children>
+                              <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="144.0" text="About">
+                                 <graphic>
+                                    <FontAwesomeIcon fill="#2196f3" iconName="INFO" styleClass="icons" />
+                                 </graphic>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="57.0" prefWidth="200.0">
+                           <children>
                               <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="144.0" text="Exit">
                                  <graphic>
                                     <FontAwesomeIcon fill="#2196f3" iconName="SIGN_OUT" styleClass="icons" />
@@ -46,9 +55,9 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <VBox fx:id="listVBox" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <Label prefHeight="65.0" prefWidth="698.0" styleClass="day_label" text="Day Label">
+                        <Label fx:id="dateHeader" prefHeight="65.0" prefWidth="698.0" styleClass="day_label" text="Day Label">
                            <font>
                               <Font size="35.0" />
                            </font>

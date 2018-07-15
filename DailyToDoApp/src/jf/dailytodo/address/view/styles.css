@@ -35,7 +35,7 @@
 .button:pressed{
 	
 	-fx-font-weight:bold;
-	-fx-background-color: #2196f3;
+	-fx-background-color: #1769aa;
 	-fx-font-size: 16;
 	-fx-text-fill: white;
 	-fx-background-radius: 0;
@@ -56,6 +56,13 @@
 	
 }
 
+
+#Text{
+	-fx-font-family: Apple SD Gothic Neo;
+    -fx-fill: black;
+	-fx-font-size: 15px;
+    -fx-stroke-width: 1;
+}
 
 
 

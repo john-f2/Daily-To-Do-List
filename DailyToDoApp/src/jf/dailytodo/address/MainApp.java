@@ -21,6 +21,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import jf.dailytodo.address.model.ToDoDatabase;
+import jf.dailytodo.address.view.RootStageController;
+
 
 
 public class MainApp extends Application {
@@ -61,7 +63,17 @@ public class MainApp extends Application {
 			Scene scene = new Scene(rootStage);
 			primaryStage.setScene(scene);
 			
+			
+			//gets the RootStageController and then sets the controller with the mainApp
+			//purpose is to allow refrence back to the mainController
+			//remeber this will give you an exception if you dont see the fxml to the controller class 
+			//in scenebuilder!
+			RootStageController controller = loader.getController();
+            controller.setMainApp(this);
+			
 			primaryStage.show();
+			
+
 			
 			
 			//looks up the split pane divider and then set it to transparent 
