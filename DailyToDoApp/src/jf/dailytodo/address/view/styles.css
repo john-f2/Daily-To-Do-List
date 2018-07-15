@@ -1,0 +1,65 @@
+.split-pane:vertical > .split-pane-divider {
+   -fx-background-color: transparent;
+}
+
+.split-pane:horizontal > .split-pane-divider {
+   -fx-background-color: transparent;
+}
+
+.split-pane {
+    -fx-background-color: -fx-control-inner-background;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+
+.button{
+	-fx-font-weight:bold;
+	-fx-background-color: transparent;
+	-fx-font-size: 16;
+	-fx-text-fill: white;
+	-fx-background-radius: 0;
+	
+}
+
+.button:hover{
+	
+	-fx-font-weight:bold;
+	-fx-background-color: white;
+	-fx-font-size: 16;
+	-fx-text-fill: #2196f3;
+	-fx-background-radius: 0;
+	
+	
+}
+
+.button:pressed{
+	
+	-fx-font-weight:bold;
+	-fx-background-color: #2196f3;
+	-fx-font-size: 16;
+	-fx-text-fill: white;
+	-fx-background-radius: 0;
+	
+	
+}
+
+
+.icons{
+    -fx-font-family: FontAwesome;
+    -fx-font-size: 16px;
+	-fx-fill: #0d3c61;
+}
+
+.day_label{
+	-fx-font-family: "Apple SD Gothic Neo";
+
+	
+}
+
+
+
+
+
+
+
+

@@ -13,6 +13,9 @@ package jf.dailytodo.address.model;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.Date;
+
+import javafx.scene.image.Image;
+
 import java.util.Calendar;
 
 public class ToDoDatabase {
@@ -23,7 +26,7 @@ public class ToDoDatabase {
 	private static Connection db = null;
 	private static Statement stmt = null;
 	
-	
+	 
 	
 	
 	
