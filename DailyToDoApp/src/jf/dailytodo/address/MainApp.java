@@ -19,9 +19,13 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Font;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import jf.dailytodo.address.model.ToDoDatabase;
+import jf.dailytodo.address.util.EventEntry;
+import jf.dailytodo.address.view.AddNewEventViewController;
 import jf.dailytodo.address.view.RootStageController;
+
 
 
 
@@ -46,6 +50,11 @@ public class MainApp extends Application {
         this.primaryStage.getIcons().add(new Image("file:resources/images/if_icon-86-document-list_314769.png"));
         
 		initRootStage();
+		
+	}
+	
+	@Override
+	public void stop() {
 		
 	}
 	
@@ -89,6 +98,43 @@ public class MainApp extends Application {
 		}
 		catch (IOException e) {
 			e.printStackTrace();
+		}
+		
+	}
+	
+	
+	public EventEntry showAddNewEventView() {
+		
+		try {
+			//loads the view 
+			FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("view/AddNewEventView.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+            
+            //sets the view into a new window stage
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Add New Event");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            
+            //sets the view anchorPane to the scene and then sets the dialogStage to that scene
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+            
+            AddNewEventViewController controller = loader.getController();
+            //set the controller class's dialog stage to the mainApp dialog stage, allows reference back
+            controller.setDialogStage(dialogStage);
+            
+            dialogStage.showAndWait();
+            
+            return controller.getNewEvent();
+            
+            
+			
+		}
+		catch(IOException e) {
+			e.printStackTrace();
+			return new EventEntry();
 		}
 		
 	}

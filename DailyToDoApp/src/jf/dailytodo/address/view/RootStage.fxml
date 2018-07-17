@@ -24,7 +24,7 @@
                         </HBox>
                         <HBox prefHeight="57.0" prefWidth="144.0">
                            <children>
-                              <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="150.0" text="Add Event">
+                              <Button mnemonicParsing="false" onAction="#addNewEvent" prefHeight="100.0" prefWidth="150.0" text="Add Event">
                                  <graphic>
                                     <FontAwesomeIcon fill="#2196f3" iconName="PLUS" styleClass="icons" />
                                  </graphic>
@@ -33,7 +33,7 @@
                         </HBox>
                         <HBox prefHeight="57.0" prefWidth="200.0">
                            <children>
-                              <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="144.0" text="About">
+                              <Button mnemonicParsing="false" onAction="#handleAbout" prefHeight="100.0" prefWidth="144.0" text="About">
                                  <graphic>
                                     <FontAwesomeIcon fill="#2196f3" iconName="INFO" styleClass="icons" />
                                  </graphic>
@@ -42,7 +42,7 @@
                         </HBox>
                         <HBox prefHeight="57.0" prefWidth="200.0">
                            <children>
-                              <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="144.0" text="Exit">
+                              <Button mnemonicParsing="false" onAction="#handleExit" prefHeight="100.0" prefWidth="144.0" text="Exit">
                                  <graphic>
                                     <FontAwesomeIcon fill="#2196f3" iconName="SIGN_OUT" styleClass="icons" />
                                  </graphic>

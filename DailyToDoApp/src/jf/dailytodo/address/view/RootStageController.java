@@ -10,18 +10,21 @@
 package jf.dailytodo.address.view;
 
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-import javafx.scene.text.TextBuilder;
 import jf.dailytodo.address.model.ToDoDatabase;
+import jf.dailytodo.address.util.EventEntry;
 import jf.dailytodo.address.MainApp;
 
 
@@ -32,6 +35,8 @@ public class RootStageController {
 	
 	@FXML
 	private VBox listVBox;
+	
+	
 	
 	
 	private MainApp mainApp;
@@ -80,6 +85,43 @@ public class RootStageController {
 		testHbox.getChildren().add(test1);
 		testHbox.getChildren().add(testButton);
 		testHbox.setAlignment(Pos.CENTER_LEFT);
+		
+	}
+	
+	
+	@FXML
+	private void addNewEvent() {
+		EventEntry returnedEvent = mainApp.showAddNewEventView();
+		if(returnedEvent.getTitle().equals("")) {
+			System.out.println("the object is empty");
+		}
+		else {
+			System.out.println("the object is filled!");
+		}
+		
+		
+	}
+	
+	@FXML
+	private void handleAbout() {
+		
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("Daily To-Do List Application");
+        alert.setHeaderText("About Application");
+        alert.setContentText("Daily To-Do Application v1.0\nAuthor: John Fu");
+
+        alert.showAndWait();
+		
+		
+	}
+	
+	
+	@FXML
+	private void handleExit() {
+		
+		Platform.exit();
+		
+		
 		
 	}
 	
