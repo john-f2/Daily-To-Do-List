@@ -16,6 +16,7 @@ import java.util.Date;
 
 import javafx.scene.image.Image;
 import jf.dailytodo.address.util.DateHashMap;
+import jf.dailytodo.address.util.EventEntry;
 
 import java.util.Calendar;
 
@@ -130,8 +131,18 @@ public class ToDoDatabase {
 	public static boolean createDailyTable() {
 		
 		try {
+			String query = "CREATE TABLE IF NOT EXISTS todolist " +
+							"(id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
+							+ "title TEXT NOT NULL,"
+							+ "location TEXT NOT NULL,"
+							+ "start_time TEXT NOT NULL,"
+							+ "end_time TEXT NOT NULL,"
+							+ "description TEXT NOT NULL,"
+							+ "day TEXT NOT NULL)";
 			
-
+			stmt.executeUpdate(query);
+			
+			
 				
 			
 			
@@ -139,8 +150,55 @@ public class ToDoDatabase {
 		}
 		catch(Exception e)
 		{
-			
+			System.err.println( e.getClass().getName() + ": " + e.getMessage() );
 			return false;
+		}
+		
+		
+	}
+	
+	/**
+	 * Adds a new event to todolist database
+	 * @param event
+	 * @return true if successful, else false
+	 */
+	public boolean addEvent(EventEntry event) {
+		try {
+			
+			String query = "INSERT INTO todolist(title,location,start_time,"
+					+ "end_time,description,day) VALUES(?,?,?,?,?,?)";
+			
+			PreparedStatement psmt = db.prepareStatement(query);
+			psmt.setString(1, event.getTitle());
+			psmt.setString(2, event.getLocation());
+			psmt.setString(3,event.getStartTime());
+			psmt.setString(4, event.getEndTime());
+			psmt.setString(5, event.getDescription());
+			psmt.setString(6, getTodayDate());;
+			
+			psmt.executeUpdate();
+			psmt.close();
+			
+			return true;
+		}
+		catch(Exception e) 
+		{
+			System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+			return false;
+		}
+		
+		
+	}
+	
+	public static void deleteDailyTable() {
+		try {
+			String dropQuery = "DROP TABLE IF EXISTS todolist";
+			stmt.executeUpdate(dropQuery);
+			
+		}
+		catch(Exception e)
+		{
+			System.err.println( e.getClass().getName() + ": " + e.getMessage() );
 		}
 		
 		

@@ -20,6 +20,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
@@ -30,8 +31,8 @@ import jf.dailytodo.address.MainApp;
 
 public class RootStageController {
 	
-	@FXML
-	private Label dateHeader;
+	//@FXML
+	//private Label dateHeader;
 	
 	@FXML
 	private VBox listVBox;
@@ -47,11 +48,16 @@ public class RootStageController {
 	private void initialize() {
 		//code for when the rootStage initializes 
 		
+		//sets the header for today
 		todayDate = ToDoDatabase.getTodayDate();
 		todayDate += " To-Do List";
+		Text dateHeader = new Text();
+		dateHeader.setStyle("-fx-font-weight:bold;" + "-fx-font-size: 30;" + "-fx-text-fill: #2196f3;");
 		dateHeader.setText(todayDate);
 		
-		testVbox();
+		listVBox.getChildren().add(dateHeader);
+		
+		//testVbox();
 
 		
 		
@@ -88,6 +94,82 @@ public class RootStageController {
 		
 	}
 	
+	/**
+	 * Dynamically adds new Hbox to view 
+	 * Hbox will contain the new event information
+	 */
+	private void setNewEvent(EventEntry newEvent) {
+		
+		//new Hbox for title
+		HBox newHbox = new HBox();
+		newHbox.setStyle("-fx-font-weight:bold;" + "-fx-font-size: 20;");
+		//text object for title text
+		Text newTitle = new Text();
+		newTitle.setText("• " + newEvent.getTitle());
+		
+		
+		//delete button 
+		Button deleteButton = new Button("");
+		
+		FontAwesomeIcon trashIcon = new FontAwesomeIcon();
+		trashIcon.setIconName("TRASH");
+		deleteButton.setGraphic(trashIcon);
+		
+		//new Hbox for start time and end time
+		HBox timeHbox = new HBox();
+		Text newStartTime = new Text();
+		Text newEndTime = new Text();
+		
+		newStartTime.setText("\tStart Time: " + newEvent.getStartTime() + "     ");
+		newEndTime.setText("End Time: " + newEvent.getEndTime());
+		
+		//Hbox for location
+		HBox locationHbox = new HBox();
+		Text locationText = new Text();
+		locationText.setText("\tLocation: "+ newEvent.getLocation());
+		
+		//Hbox for description
+		HBox descriptionHbox = new HBox();
+		descriptionHbox.setStyle("-fx-border-style: dashed;"+ "-fx-border-width: 0 0 2 0;" +" -fx-border-color: white white #2196f3 white;");
+		Text descriptionText = new Text();
+		descriptionText.setText("\tDescription: " + newEvent.getDescription());
+		
+
+
+		
+		
+		
+		//adding new HBox to the existing VBox
+		listVBox.getChildren().add(newHbox);
+		listVBox.getChildren().add(timeHbox);
+		listVBox.getChildren().add(locationHbox);
+		listVBox.getChildren().add(descriptionHbox);
+
+		
+		//setting the children of the new Hboxes
+		
+		//sets title hbox
+		newHbox.getChildren().add(newTitle);
+		newHbox.getChildren().add(deleteButton);
+		newHbox.setAlignment(Pos.CENTER_LEFT);
+		
+		//sets time hbox
+		timeHbox.getChildren().add(newStartTime);
+		timeHbox.getChildren().add(newEndTime);
+		timeHbox.setAlignment(Pos.CENTER_LEFT);
+		
+		//sets location hbox
+		locationHbox.getChildren().add(locationText);
+		timeHbox.setAlignment(Pos.CENTER_LEFT);
+		
+		//sets description in hbox
+		descriptionHbox.getChildren().add(descriptionText);
+		timeHbox.setAlignment(Pos.CENTER_LEFT);
+		
+		
+		
+	}
+	
 	
 	@FXML
 	private void addNewEvent() {
@@ -97,6 +179,7 @@ public class RootStageController {
 		}
 		else {
 			System.out.println("the object is filled!");
+			setNewEvent(returnedEvent);
 		}
 		
 		
@@ -108,7 +191,7 @@ public class RootStageController {
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("Daily To-Do List Application");
         alert.setHeaderText("About Application");
-        alert.setContentText("Daily To-Do Application v1.0\nAuthor: John Fu");
+        alert.setContentText("Daily To-Do List Application v1.0\nAuthor: John-f2");
 
         alert.showAndWait();
 		

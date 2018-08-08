@@ -39,6 +39,7 @@ public class MainApp extends Application {
 
 	@Override
 	public void start(Stage primaryStage) {
+		ToDoDatabase.establishConnection();
 		ToDoDatabase.createDailyTable();
 		
 		
@@ -55,6 +56,9 @@ public class MainApp extends Application {
 	
 	@Override
 	public void stop() {
+		//used for debuging purposes
+		//ToDoDatabase.deleteDailyTable();
+		ToDoDatabase.closeConnection();
 		
 	}
 	

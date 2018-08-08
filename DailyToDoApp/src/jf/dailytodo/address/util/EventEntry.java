@@ -9,6 +9,9 @@
  */
 package jf.dailytodo.address.util;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class EventEntry {
 	
 	//member variables
@@ -98,7 +101,7 @@ public class EventEntry {
 	public String getDescription() {
 		return description;
 	}
-	
+		
 	
 
 }
